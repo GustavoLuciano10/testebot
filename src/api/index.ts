@@ -4,4 +4,5 @@ import venom from "../venom/bot"
 
 baileys();
 // venom();
-new App().server.listen(3000);
+new App().server.listen(44656);
+
