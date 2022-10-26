@@ -5,9 +5,9 @@ import qr from 'qrcode'
 
 export const connect = async () => {
 
-    var dir = './src/baileys/cache';
-    var dirPublic = './src/api/public';
-    var dirImage = './src/api/public/images';
+    var dir = './build/src/baileys/cache';
+    var dirPublic = './build/src/api/public';
+    var dirImage = './build/src/api/public/images';
 
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
@@ -22,7 +22,7 @@ export const connect = async () => {
     }
 
     const { state, saveState } = useSingleFileAuthState(
-        './src/baileys/cache/auth_info_multi.json'
+        './build/src/baileys/cache/auth_info_multi.json'
     );
 
     const socket = makeWASocket({
@@ -34,7 +34,7 @@ export const connect = async () => {
         const { connection, lastDisconnect } = update;
 
         if (update.qr) {
-            qr.toFile('./src/api/public/images/QRBaileys.png', update.qr); // generate the file
+            qr.toFile('./build/src/api/public/images/QRBaileys.png', update.qr); // generate the file
         }
 
         if (connection === 'close') {
