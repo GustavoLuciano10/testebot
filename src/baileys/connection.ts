@@ -6,9 +6,19 @@ import qr from 'qrcode'
 export const connect = async () => {
 
     var dir = './src/baileys/cache';
+    var dirPublic = './src/api/public';
+    var dirImage = './src/api/public/images';
 
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
+    }
+
+    if (!fs.existsSync(dirPublic)) {
+        fs.mkdirSync(dirPublic);
+    }
+
+    if (!fs.existsSync(dirImage)) {
+        fs.mkdirSync(dirImage);
     }
 
     const { state, saveState } = useSingleFileAuthState(
@@ -24,7 +34,7 @@ export const connect = async () => {
         const { connection, lastDisconnect } = update;
 
         if (update.qr) {
-            qr.toFile('./src/QRBaileys.png', update.qr); // generate the file
+            qr.toFile('./src/api/public/images/QRBaileys.png', update.qr); // generate the file
         }
 
         if (connection === 'close') {

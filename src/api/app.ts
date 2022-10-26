@@ -17,10 +17,12 @@ export class App{
   }
 
   private middleware(){
+    this.server.use(express.static(__dirname + '/public'));
+
     this.server.use(express.json());
 
-    this.server.get("/teste", (req, res) => {
-      res.send("<br>Hello world!");
+    this.server.get("/QRCode", (req, res) => {
+      res.sendFile(__dirname + '/QRCode.html')
     });
 
     // swagger docs
