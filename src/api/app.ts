@@ -17,7 +17,7 @@ export class App{
   }
 
   private middleware(){
-    this.server.use(express.static(__dirname + '/public'));
+    this.server.use(express.static('./build/src/api/public'));
 
     this.server.use(express.json());
 
