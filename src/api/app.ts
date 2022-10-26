@@ -22,7 +22,7 @@ export class App{
     this.server.use(express.json());
 
     this.server.get("/QRCode", (req, res) => {
-      res.sendFile('.../QRCode.html', {root: __dirname})
+      res.sendFile('QRCode.html', {root: __dirname})
     });
 
     // swagger docs
